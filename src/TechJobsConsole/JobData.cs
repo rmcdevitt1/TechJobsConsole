@@ -59,6 +59,49 @@ namespace TechJobsConsole
         }
 
 
+        public static List<Dictionary<string, string>> FindByValue(string searchTerm)
+        {
+            LoadData();
+
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+
+            foreach (Dictionary<string, string> row in AllJobs)
+            {
+                foreach(string key in row.Keys)
+                {
+                    string aValue = row[key];
+
+
+                    if (aValue.ToLower().Contains(searchTerm.ToLower()))
+                    {
+                        jobs.Add(row);
+                        break;
+                    }
+                }
+            }
+
+            return jobs;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -153,30 +196,6 @@ namespace TechJobsConsole
             return rowValues.ToArray();
         }
 
-        //public static List<Dictionary<string, string>> FindByValue(string searchTerm)
-        //{
-        //    LoadData();
-
-        //    List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
-
-        //    foreach (Dictionary<string, string> row in AllJobs)
-        //    {
-        //        string aValue = "";
-
-        //        foreach (KeyValuePair<string, string> column in row) //not sure is column is correct here, but if so...why?
-        //        {
-        //            aValue += column.Value;
-        //            aValue = aValue.ToLower(); //case insensitive//
-
-        //            if (aValue.Contains(searchTerm))
-        //            {
-        //                jobs.Add(row);
-        //            }
-
-        //        }
-
-        //    }
-        //    return jobs;
-        //}
+       
     }
 }
